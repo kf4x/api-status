@@ -1,0 +1,21 @@
+<%inherit file="base.html"/>
+
+<table>
+    % for row in data:
+        ${makerow(row)}
+    % endfor
+</table>
+
+<%def name="makerow(row)">
+    <tr>
+
+      <td class="name-col">${row.get('name')}</td>
+      % if row.get('status_code') != 200:
+          <td class="status-col not-ok">
+      % else:
+          <td class="status-col" >
+      % endif
+      ${row.get('status_code')} ${row.get('response_time')}</td>
+    </tr>
+</%def>
+    

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="author" content="Javier Chavez" />
+    <meta name="description" content="Status page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <meta property="twitter:description" content="Javier Chavez, a developer from Albuquerque, New Mexico. Here is my README">
+    <meta property="twitter:title" content="Javier C - README">
+    <meta property="twitter:url" content="http://javierc.io">
+    
+    <title>Status page</title>
+
+
+    <style>
+     body {
+       display: flex;
+       min-height: 60vh;
+       flex-direction: column;
+     }
+     
+     table {
+       width: 50%;
+       margin-left: auto;
+       margin-right: auto;
+     }
+
+     tr td {
+       border-bottom:1pt solid #d6d6d6;
+       height: 8vh;
+       font-family: monospace;
+       max-width: 0;
+       overflow: hidden;
+       text-overflow: ellipsis;
+       white-space: nowrap;
+       color: #828282;
+     }
+
+     td.name-col {
+       width: 70%;
+     }
+
+     td.status-col {
+       width: 30%;
+     }
+
+     .not-ok {
+       color: #f19696;
+     }
+     
+    </style>
+    
+  </head>
+  <body>
+    <main>
+      ${self.body()}
+    </main>
+  </body>
+</html>
