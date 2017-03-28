@@ -1,0 +1,15 @@
+DEBUG = True
+# server key is not needed if in debug. Its for sending push notifications
+server_key = "private key"
+auth = "credentials"
+
+
+endpoints = [
+    {
+        "name": "Example endpoint",
+        "location": "http://example.com",
+        "status_code": 0,
+        "response_time": ''
+    }
+]
+
