@@ -114,11 +114,13 @@ class SubscribeResource(object):
         resp.content_type = 'text/html'
         protocol = 'email'
         endpoint = req.get_param('email')
-        
+
         if req.get_param('phone'):
             protocol = 'sms'
             endpoint = req.get_param('phone')
-            
+
+        if not endpoint:
+            raise falcon.HTTPSeeOther('/')
 
         response = client.subscribe(
             TopicArn=any_api_topic,
