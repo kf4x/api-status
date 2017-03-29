@@ -4,6 +4,7 @@ Uses the super fast Falcon framework with Advanced python scheduler.
 
 ##### Why
 Status pages are expensive! So I created this for my projects.
+You can see it [running live](http://status.javierc.io/)
 
 ##### How
 This is a small app that pings API endpoints and checks response.
