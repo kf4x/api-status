@@ -1,5 +1,7 @@
 <%inherit file="base.html"/>
 
+
+<h2>Status</h2>
 <table>
     % for row in data:
         ${makerow(row)}
@@ -18,4 +20,25 @@
       ${row.get('status_code')} ${row.get('response_time')}</td>
     </tr>
 </%def>
+
+
+<h2>Subscribe or Unsubscribe</h2>
+<div id="subscribe">
+
+  <form role="form" method="post" action="/subscribe">
+
+    <fieldset>
+      <label for="inpEmail">Email</label>
+      <input type="email" id="inpEmail" name="email" placeholder="me@example.com">
+    </fieldset>
     
+    <center><strong>OR</strong></center>
+
+    <fieldset>
+      <label for="inpPhone">Phone</label>
+      <input type="tel" pattern="\d{1}[\-]\d{3}[\-]\d{3}[\-]\d{4}" id="inpPhone" name="phone" placeholder="1-303-777-1234">
+    </fieldset>
+    <input type="submit" value="Submit" />
+
+  </form>
+</div>    
