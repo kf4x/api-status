@@ -1,6 +1,14 @@
-# Falcon Application 
+# API Status Monitor
 
-This is a small app that pings apis and checks response
+I used the super fast Falcon framework.
+
+This is a small app that pings API endpoints and checks response.
+If the response is not 200 then it notifies subscribers via AWS sns.
+
+Currently you can subscribe to get alerts via email or SMS.
+
+Meant to be small lightweight. **Yes** the css is not great,
+but I didnt want to add exernal libs. 
 
 # Overview of Endpoints
 
