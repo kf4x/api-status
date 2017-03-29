@@ -32,6 +32,7 @@ REGION=region
 KEY_ID=key_id
 ACCESS_KEY=secret_access
 ANY_STATUS=arn
+LOGIN=username:password
 ```
 
 
