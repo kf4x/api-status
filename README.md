@@ -1,6 +1,9 @@
 # API Status Page and Monitor
 
 Uses the super fast Falcon framework with Advanced python scheduler.
+**NO** javascript or external libs used to manipuate DOM in hopes to keep it safe and 
+fast.
+
 
 ##### Why
 Status pages are expensive! So I created this for my projects.
