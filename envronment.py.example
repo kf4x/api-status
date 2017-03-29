@@ -1,12 +1,17 @@
 DEBUG = True
 
+name = "name"
+location = "location"
+status_code = "status_code"
+response_time = "response_time"
+
 
 endpoints = [
     {
-        "name": "Example endpoint",
-        "location": "http://example.com",
-        "status_code": 0,
-        "response_time": ''
+        name: "Example endpoint",
+        location: "http://example.com",
+        status_code: 0,
+        response_time: ''
     }
 ]
 
