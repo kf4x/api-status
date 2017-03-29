@@ -22,8 +22,18 @@ pip install -r requirements.txt
 
 Open ``environment.py`` file and fill in
 * ``DEBUG`` turn on debug mode
-* ``auth`` basic auth format of usr:pwd
 * ``endpoints`` list of endpoints to check 
+
+
+You will need environment variables.
+
+```bash
+REGION=region
+KEY_ID=key_id
+ACCESS_KEY=secret_access
+ANY_STATUS=arn
+```
+
 
 # Running
 
