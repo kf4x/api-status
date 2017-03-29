@@ -29,11 +29,11 @@ scheduler = BackgroundScheduler()
 
 client = boto3.client(
     'sns',
-    region_name= os.environ.get('REGION', ''),
-    aws_access_key_id = os.environ.get('KEY_ID', ''),
-    aws_secret_access_key = os.environ.get('ACCESS_KEY', '')
+    region_name= os.environ["REGION"],
+    aws_access_key_id = os.environ["KEY_ID"],
+    aws_secret_access_key = os.environ["ACCESS_KEY"]
 )
-any_api_topic = os.environ.get('ANY_STATUS', '')
+any_api_topic = os.environ["ANY_STATUS"]
 
 
 def get_html(template, data):
@@ -55,7 +55,7 @@ def check_auth(header):
         return False
 
     out = base64.standard_b64decode(header.split(" ")[1])
-    if out.decode("utf-8") == os.environ.get('LOGIN'):
+    if out.decode("utf-8") == os.environ.get("LOGIN"):
         return True
     else:
         return False
