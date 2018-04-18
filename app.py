@@ -27,6 +27,8 @@ LOCATION = " http://status.javierc.io"
 template_lookup = TemplateLookup(directories=['/templates','.'])
 scheduler = BackgroundScheduler()
 
+error_cache = {}
+
 client = boto3.client(
     'sns',
     region_name= os.environ["REGION"],
@@ -78,8 +80,31 @@ def call_url_task(endpoints):
                 print("Calling", endpoint.get('location'))
             rsp = requests.get(endpoint.get('location'))
             endpoint['status_code'] = rsp.status_code
-            if rsp.status_code != 200:
-                error += 1 
+
+            # was there already an error and it changed
+            if endpoint.get('location') in error_cache:
+                if rsp.status_code == 200:
+                    error_cache.pop(endpoint.get('location'), None)
+            else:
+                if rsp.status_code != 200:
+                    error_cache[endpoint.get('location')] = rsp.status_code
+                    error += 1
+                elif endpoint.get('test', None):
+                    _json = rsp.json()
+                    val = _json.data.get(endpoint['key'])
+                    if endpoint['func'] == 'elapsed':
+                        # parse time
+                        p_time = datetime.datetime.strptime(val, "%Y-%m-%dT%H:%M:%S.%f")
+                        # current time
+                        c_time = datetime.datetime.now()
+                        result = p_time - c_time < endpoint['cond']
+                        if not result:
+                            error_cache[endpoint.get('location')] = rsp.status_code
+                            error += 1
+                        # {'key': 'last_update', 'func': 'elapsed', 'cond': 32400}
+                    
+                
+                        
             r_time = rsp.elapsed.microseconds/1000
             endpoint['response_time'] = str(int(r_time)) + 'ms'           
     except:
