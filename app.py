@@ -90,12 +90,13 @@ def call_url_task(endpoints):
                     error_cache[endpoint.get('location')] = rsp.status_code
                     error += 1
                 elif endpoint.get('test', None):
+                    test = endpoint.get('test', None)
                     _json = rsp.json()
-                    val = _json.get(endpoint['key'], None)
+                    val = _json.get(test['key'], None)
                     result = True
-                    if endpoint['func'] == 'assert':
+                    if test['func'] == 'assert':
                         result = True if val else False
-                    elif endpoint['func'] == 'elapsed':
+                    elif test['func'] == 'elapsed':
                         # parse time
                         p_time = datetime.datetime.strptime(val, "%Y-%m-%dT%H:%M:%S.%f")
                         # current time
