@@ -90,9 +90,8 @@ def call_url_task(endpoints):
                     error_cache[endpoint.get('location')] = rsp.status_code
                     error += 1
                 elif endpoint.get('test', None):
-                    print("Testing")
                     _json = rsp.json()
-                    val = _json.get('data', None)
+                    val = _json.get(endpoint['key'], None)
                     result = True
                     if endpoint['func'] == 'assert':
                         result = True if val else False
@@ -107,9 +106,7 @@ def call_url_task(endpoints):
                         error_cache[endpoint.get('location')] = rsp.status_code
                         error += 1
                         # {'key': 'last_update', 'func': 'elapsed', 'cond': 32400}
-                    
-                
-                        
+
             r_time = rsp.elapsed.microseconds/1000
             endpoint['response_time'] = str(int(r_time)) + 'ms'           
     except:
